@@ -566,13 +566,14 @@ class alp2gpx(object):
    
     
     def parse_ldk(self):
+        print('\nSorry, LDK support is not yet implemented. :-/\n')
         # - int       application specific magic number
         # - int       archive version
         # - pointer   {Node} position of the root node (always with list entries)
         # - double    reserved
         # - double    reserved
         # - double    reserved
-        # - double    reserved            
+        # - double    reserved
         self.inputfile.seek(0)
         application_specific_magic_number = self._get_int()
         archive_version = self._get_int()
@@ -581,7 +582,8 @@ class alp2gpx(object):
         
         root_node = self._get_node(position_of_the_root_node)
         
-        pass
+        return None
+
         
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
