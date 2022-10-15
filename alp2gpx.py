@@ -258,7 +258,7 @@ class alp2gpx(object):
         # - {NodeEntries} entries of the nod
         
         self.inputfile.seek(offset)
-        magig_number_of_the_node = self._get_int()
+        magic_number_of_the_node = self._get_int()
         flags  = self._get_int()
         metadata_pointer = self._get_pointer()
         node_entries = self._get_long()
@@ -579,7 +579,7 @@ class alp2gpx(object):
         archive_version = self._get_int()
         position_of_the_root_node = self._get_pointer()
         res1, res2, res3, res4 = self._get_double(), self._get_double(), self._get_double(), self._get_double()
-        
+        pause
         root_node = self._get_node(position_of_the_root_node)
         
         return None
