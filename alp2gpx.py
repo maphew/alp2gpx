@@ -235,7 +235,7 @@ class alp2gpx(object):
         return(data)
             
     def _get_node_data(self, node):
-        data = ''
+        data = bytearray()
         self.inputfile.seek(node['offset'])
         magic_number = self._get_int()   
         flags = self._get_int()
@@ -579,10 +579,9 @@ class alp2gpx(object):
         archive_version = self._get_int()
         position_of_the_root_node = self._get_pointer()
         res1, res2, res3, res4 = self._get_double(), self._get_double(), self._get_double(), self._get_double()
-        pause
         root_node = self._get_node(position_of_the_root_node)
-        
-        return None
+        pause
+        return
 
         
 if __name__ == "__main__":
