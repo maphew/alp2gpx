@@ -277,13 +277,16 @@ class alp2gpx(object):
       
         node_entries_magic = self._get_int()
         
-        if node_entries_magic == 0x00025555:
+        # magic numbers, from psyberia archive spec doc
+        node_entries_as_list = 0x00025555
+        node_entries_as_table = 0x00045555
+        if node_entries_magic == node_entries_as_list:
             n_total = self._get_int()
             n_child = self._get_int()
             n_data = self._get_int()
             add_offset = self._get_pointer()
             n_empty = n_total - n_child - n_data;
-        elif node_entries_magic == 0x00045555:
+        elif node_entries_magic == node_entries_as_table:
             n_child = self._get_int()
             n_data = self._get_int()
             n_empty = 0
@@ -330,7 +333,9 @@ class alp2gpx(object):
                 NOT SUPPORTED FILE TYPE
                 FOR NOW
                 '''
+                print(f'Filetype "{file_type}" is unsupported for now')
                 pass
+        print(f''''++ end of _get_node() for "{entry['path']}"''')
               
             
     def total_track_time(self):
@@ -580,8 +585,8 @@ class alp2gpx(object):
         position_of_the_root_node = self._get_pointer()
         res1, res2, res3, res4 = self._get_double(), self._get_double(), self._get_double(), self._get_double()
         root_node = self._get_node(position_of_the_root_node)
-        pause
-        return
+
+        pass
 
         
 if __name__ == "__main__":
